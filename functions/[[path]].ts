@@ -1,3 +1,4 @@
+import { createPagesFunctionHandler } from "@react-router/cloudflare";
 import { createRequestHandler } from "react-router";
 
 declare module "react-router" {
@@ -9,15 +10,20 @@ declare module "react-router" {
   }
 }
 
-const requestHandler = createRequestHandler(
-  () => import("virtual:react-router/server-build"),
-  import.meta.env.MODE
-);
+// const requestHandler = createRequestHandler(
+//   () => import("virtual:react-router/server-build"),
+//   import.meta.env.MODE
+// );
 
-export default {
-  async fetch(request, env, ctx) {
-    return requestHandler(request, {
-      cloudflare: { env, ctx },
-    });
-  },
-} satisfies ExportedHandler<Env>;
+// export default {
+//   async fetch(request, env, ctx) {
+//     return requestHandler(request, {
+//       cloudflare: { env, ctx },
+//     });
+//   },
+// } satisfies ExportedHandler<Env>;
+
+export const onRequest = createPagesFunctionHandler<Env>({
+	build,
+	mode: import.meta.env.MODE,
+});
