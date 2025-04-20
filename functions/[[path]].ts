@@ -1,5 +1,6 @@
 import { createPagesFunctionHandler } from "@react-router/cloudflare";
 import { createRequestHandler } from "react-router";
+import * as build from "../build/server";
 
 declare module "react-router" {
   export interface AppLoadContext {
@@ -22,6 +23,7 @@ declare module "react-router" {
 //     });
 //   },
 // } satisfies ExportedHandler<Env>;
+
 
 export const onRequest = createPagesFunctionHandler<Env>({
 	build,

@@ -6,7 +6,7 @@
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "my-react-router-app",
 	"compatibility_date": "2025-04-04",
-	"main": "./functions/[[path]].ts",
+	// "main": "./functions/[[path]].ts",
 	"vars": {
 		"VALUE_FROM_CLOUDFLARE": "Hello from Cloudflare"
 	},
